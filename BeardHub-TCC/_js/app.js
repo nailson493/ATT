@@ -1,18 +1,20 @@
-  import { initializeApp } from "firebase/app";
-  import { getDatabase } from "firebase/database";
-  
-  // TODO: Replace the following with your app's Firebase project configuration
-  // See: https://firebase.google.com/docs/web/learn-more#config-object
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
   const firebaseConfig = {
-    // ...
-    // The value of `databaseURL` depends on the location of the database
-    databaseURL: "https://beardhub-bddd9-default-rtdb.firebaseio.com",
+    apiKey: "AIzaSyAdYba-Ftj2EpHen-gFTAzKQdTKl--C-jk",
+    authDomain: "beardhub-b6fac.firebaseapp.com",
+    projectId: "beardhub-b6fac",
+    storageBucket: "beardhub-b6fac.appspot.com",
+    messagingSenderId: "733189049588",
+    appId: "1:733189049588:web:8b584e571fdd6bd08ae2a1",
+    measurementId: "G-4ZVF5D2FMS"
   };
-  
+
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  
-  
-  // Initialize Realtime Database and get a reference to the service
-  const database = getDatabase(app);
-  
+  export const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  export const auth = getAuth(app);
+

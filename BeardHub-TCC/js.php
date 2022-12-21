@@ -1,4 +1,6 @@
-<script type="module" src="_js/app.js"></script>
+
+<script type="module" src="_js/app.js">
+</script>
 
 
 
@@ -8,10 +10,7 @@
 
 
 
-
-
-
-<script>
+<!-- <script>
     var btn = document.getElementById('btn-telefone');
     var email = document.querySelector('.email');
     var telefone = document.querySelector(".telefone");
@@ -49,4 +48,4 @@
         telefone.style.display = 'none';
     }
     });
-</script>
+</script> -->

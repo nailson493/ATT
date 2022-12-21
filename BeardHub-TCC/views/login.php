@@ -19,11 +19,11 @@
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="#">
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium  dark:text-white">Email</label>
+                            <label for="email" id="lblEmail" class="block mb-2 text-sm font-medium  dark:text-white">Email</label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-4JUdGzvrMFDWrUUwY3toJATSeNwjn54LkCnKBPRzDuhzi5vSepHfUckJNxRL2gjkNrSqtCoRUrEDAgRwsQvVCjZbRyFTLRNyDmT1a1boZVrequired=">
                         </div>
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium  dark:text-white">Senha</label>
+                            <label for="password" id="lblSenha" class="block mb-2 text-sm font-medium  dark:text-white">Senha</label>
                             <input type="password" name="password" id="senha" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
                         <div class="flex items-center justify-between">
@@ -37,16 +37,54 @@
                             </div>
                             <a href="#" class="text-sm font-medium text-white hover:underline dark:text-primary-500">Forgot password?</a>
                         </div>
-                        <button type="submit" id="btnlogin" class="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">Login</button>
+                        <button type="submit" id="btnLogin" class="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">Login</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Não tem uma conta ainda?<a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Inscrever-se</a>
                         </p>
+                       
+                        <button type="button" href = "painel.php?r=inicial" id="btnAuthGoogle" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 mr-2 mb-2">
+                        <img class="w-6 h-6 right-3 relative" src="img/google.svg" alt="">
+                        Criar com Google
+                         </button>
                     </form>
                 </div>
             </div>
         </div>
+        <script type="module">
+                            import { GoogleAuthProvider, signInWithRedirect, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
+                            import { auth } from "./_js/app.js";
+
+                            var btnAuthGoogle = document.getElementById('btnAuthGoogle');
+                            var btnlogin = document.getElementById('btnLogin');
+                            var lblEmail = document.getElementById('lblEmail');
+                            var lblSenha = document.getElementById('lblSenha');
+
+                            btnAuthGoogle.addEventListener('click', function(){
+
+                                const provider = new GoogleAuthProvider();
+
+                                signInWithRedirect(auth, provider)
+                                .then(function (result) {
+                                    console.log(result);
+                                });
+                            });
+
+                            btnlogin.addEventListener('click', function(){
+                                signInWithEmailAndPassword(auth, lblEmail.value, lblSenha.value)
+                                .then((userCredential) => {
+                                    // Signed in 
+                                    const user = userCredential.user;
+                                    // ...
+                                })
+                                .catch((error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                });
+
+                             });
+                        </script>
       </section>
 
     </body>
 
-     <script src="_js/login.js"></script>
