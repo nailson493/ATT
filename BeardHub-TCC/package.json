@@ -1,0 +1,23 @@
+{
+  "name": "beardhub-tcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nailson493/BeardHub-TCC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nailson493/BeardHub-TCC/issues"
+  },
+  "homepage": "https://github.com/nailson493/BeardHub-TCC#readme",
+  "dependencies": {
+    "firebase": "^9.15.0"
+  }
+}
