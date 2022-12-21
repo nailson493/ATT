@@ -5,6 +5,7 @@
 <body class="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
     <?php
     include "header.php";
+    include "nav.php";
 
     switch($_GET['r']){
 
@@ -35,7 +36,7 @@
 
 
     ?>
-    <?php include "footer.php";?>
+    
     
  <?php include "js.php"; ?>
  
